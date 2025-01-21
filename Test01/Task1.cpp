@@ -15,10 +15,10 @@ int main1() {
     std::cout << "----Проверяем---- \n";
 
     if (a > b) {
-        std::cout << b;
+        std::cout << "Минимальное число - " << b;
     }
     else if (a < b) {
-        std::cout << a;
+        std::cout << "Минимальное число - " << a;
     }
     else {
         std::cout << "Числа равны";

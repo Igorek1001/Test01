@@ -8,26 +8,28 @@ int main9() {
     int profit;
     std::cout << "Введите размер прибыли: ";
     std::cin >> profit;
-    int profitWithFutureTax;
 
+    int tax = 0;
     if (profit > 50000) {
-        profitWithFutureTax = profit - 50000;
-        int tax = profitWithFutureTax * 30 / 100;
-        std::cout << "Размер налога (30%) равен: " << tax << "\n";
+        tax += (profit - 50000) * 30 / 100;
+        profit = 50000;
     }
-    else if (profit >= 10000) {
-        profitWithFutureTax = profit - 10000;
-        int tax = profitWithFutureTax * 20 / 100;
-        std::cout << "Размер налога (20%) равен: " << tax << "\n";
+    if (profit >= 10000) {
+        tax += (profit - 10000) * 20 / 100;
+        profit = 10000;
     }
-    else if (profit > 0) {
-        int tax = profit * 13 / 100;
-        std::cout << "Размер налога (13%) равен: " << tax << "\n";
-    }
-    else if (profit == 0) {
+    if (profit == 0) {
         std::cout << "Ничего не заработали?\n";
     }
-    else {
-        std::cout << "Отрицательное число?\n";
+    
+    tax += profit * 13 / 100;
+
+    if (profit < 0) {
+        std::cout << "Ошибка! Отрицательное число!\n";
     }
-}
+    else {
+        std::cout << "Требуется заплатить налог в размере: " << tax << " рублей\n";
+        return 0;
+        // Без этого else, программа будет выводить сумму налога даже при отрицательном числе
+        }
+    }

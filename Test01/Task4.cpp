@@ -9,22 +9,29 @@ int main4() {
     int level = 1;
     std::cout << "¬ведите количество опыта: ";
     std::cin >> experience;
-    std::cout << "-----—читаем----- \n";
+    std::cout << "-----—читаем----- \n\n";
 
 
-    if (experience - 1000 >= 0) {
-        experience -= 1000;
-        level += 1;
-        if (experience - 2500 >= 0) {
-        experience -= 2500;
-        level += 1;
-            } if (experience - 5000 >= 0) {
-            experience -= 5000;
-            level += 1;
-            } 
-    } else {
-        std::cout << level;
+    if (experience >= 8500) {
+        level += 3;
+        std::cout << "¬аш уровень: " << level; 
+        // «начит, что при получении 8500 опыта, система сначала заберет -1000 (+1 level), 
+        // затем -2500 (+1 level), затем -5000 (+1 level), а далее предел уровн€ (4 level).
     }
-    std::cout << "¬аш уровень: " << level;
+    else if (experience >= 3500) {
+        level += 2;
+        std::cout << "¬аш уровень: " << level;
+    } 
+    else if (experience >= 1000) {
+        level += 1;
+        std::cout << "¬аш уровень: " << level;
+    } 
+    else if (experience < 0) {
+        std::cout << "¬вод отрицательного числа";
+    }
+    else {
+        std::cout << "¬аш уровень осталс€ прежним: " << level;
+    }
+
     return 0;
 }
